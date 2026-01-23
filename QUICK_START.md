@@ -19,11 +19,12 @@ npm install
 
 ### Step 2: Configure Oten IDP (2 min)
 
-1. Go to [Oten IDP Dashboard](https://account.oten.live)
+1. Go to [Oten Developer Portal](https://developer.oten.live)
 2. Create/select your application
 3. Add these URLs:
-   - **Callback URL**: `http://localhost:5173`
-   - **Logout URL**: `http://localhost:5173`
+   - **Redirect URIs**: `http://localhost:5173`
+   - **Logout URIs**: `http://localhost:5173`
+   - **Allow Origins (CORS):**: `http://localhost:5173`
 4. Copy your **Client ID**
 
 ### Step 3: Create .env File (1 min)
@@ -52,7 +53,7 @@ Open http://localhost:5173 and click **"Log In"**! 🎉
 
 ### "Redirect URI mismatch"
 
-- Check that `http://localhost:5173` is in your Oten IDP dashboard
+- Check that `http://localhost:5173` is in your Oten Developer Portal
 
 ### "Invalid Client"
 

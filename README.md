@@ -254,27 +254,28 @@ const auth = new AuthManager(oidcSettings);
 #### Constructor
 
 ```javascript
-new AuthManager(settings)
+new AuthManager(settings);
 ```
 
 **Parameters:**
+
 - `settings` (Object) - OIDC configuration object
-  - `authority` (string) - IDP authority URL
-  - `client_id` (string) - Client ID
-  - `redirect_uri` (string) - Redirect URI after login
-  - `post_logout_redirect_uri` (string) - Redirect URI after logout
-  - `scope` (string) - OAuth scopes (e.g., "openid profile email")
+- `authority` (string) - IDP authority URL
+- `client_id` (string) - Client ID
+- `redirect_uri` (string) - Redirect URI after login
+- `post_logout_redirect_uri` (string) - Redirect URI after logout
+- `scope` (string) - OAuth scopes (e.g., "openid profile email")
 
 #### Methods
 
-| Method | Description | Returns |
-|--------|-------------|---------|
-| `initialize()` | Initialize auth manager and handle callbacks | `Promise<void>` |
-| `login()` | Initiate login flow | `Promise<void>` |
-| `logout()` | Initiate logout flow | `Promise<void>` |
-| `clearError()` | Clear current error state | `void` |
-| `subscribe(callback)` | Subscribe to auth state changes | `Function` (unsubscribe) |
-| `getState()` | Get current auth state | `Object` |
+| Method                | Description                                  | Returns                  |
+| --------------------- | -------------------------------------------- | ------------------------ |
+| `initialize()`        | Initialize auth manager and handle callbacks | `Promise<void>`          |
+| `login()`             | Initiate login flow                          | `Promise<void>`          |
+| `logout()`            | Initiate logout flow                         | `Promise<void>`          |
+| `clearError()`        | Clear current error state                    | `void`                   |
+| `subscribe(callback)` | Subscribe to auth state changes              | `Function` (unsubscribe) |
+| `getState()`          | Get current auth state                       | `Object`                 |
 
 #### State Object
 
@@ -312,7 +313,7 @@ const auth = new AuthManager(oidcSettings);
 
 async function fetchProtectedData() {
   const state = auth.getState();
-  
+
   if (!state.isAuthenticated || !state.user) return;
 
   const response = await fetch("https://api.example.com/protected", {
@@ -382,7 +383,7 @@ auth.subscribe((state) => {
     const errorDiv = document.getElementById("error");
     errorDiv.textContent = state.error.message;
     errorDiv.style.display = "block";
-    
+
     // Clear error after 5 seconds
     setTimeout(() => {
       auth.clearError();
@@ -400,6 +401,7 @@ auth.subscribe((state) => {
 **Problem**: The redirect URI doesn't match what's configured in Oten Developer Portal.
 
 **Solution**:
+
 - Verify the redirect URI matches exactly what's in your Oten Developer Portal dashboard
 - Include the protocol (`http://` or `https://`)
 - Don't include trailing slashes unless configured that way
@@ -410,6 +412,7 @@ auth.subscribe((state) => {
 **Problem**: Client ID is incorrect or client is not configured properly.
 
 **Solution**:
+
 - Double-check `VITE_OTEN_IDP_CLIENT_ID` in your `.env` file
 - Ensure the client is enabled in Oten Developer Portal dashboard
 - Verify the client is configured for Authorization Code Flow
@@ -419,6 +422,7 @@ auth.subscribe((state) => {
 **Problem**: Authentication fails with state mismatch error after redirect.
 
 **Solution**:
+
 - Clear browser storage (Application → Storage → Clear site data in DevTools)
 - Ensure callback handling is properly configured in `auth.js`
 - Try in incognito/private mode to rule out storage issues
@@ -429,6 +433,7 @@ auth.subscribe((state) => {
 **Problem**: User is logged out when refreshing the page.
 
 **Solution**:
+
 - Check browser console for sessionStorage errors
 - Verify sessionStorage is enabled in browser settings
 - Ensure cookies are enabled (required for OIDC)
@@ -439,6 +444,7 @@ auth.subscribe((state) => {
 **Problem**: Browser blocks requests to Oten IDP.
 
 **Solution**:
+
 - Ensure `http://localhost:5173` is added to Allow Origins (CORS) in Oten Developer Portal dashboard
 - Verify the authority URL is correct and accessible
 - Check CORS settings in your Oten IDP application
@@ -448,6 +454,7 @@ auth.subscribe((state) => {
 **Problem**: Access token expires and user is logged out.
 
 **Solution**:
+
 - This is expected behavior when tokens expire
 - The app shows an error message: "Your session has expired"
 - User needs to log in again
@@ -512,4 +519,3 @@ This sample application is provided as-is for educational and integration purpos
 ---
 
 **Built with ❤️ using Vanilla JavaScript and Oten IDP**
-
