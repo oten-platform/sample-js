@@ -80,7 +80,7 @@ npm install
 
 ### 3. Configure Oten IDP Application
 
-1. Log in to your [Oten Developer Portal](https://developer.oten.live)
+1. Log in to your [Oten Developer Portal](https://developer.oten.com)
 2. Create a new application or select an existing one
 3. Configure the following settings:
    - **Application Type**: Single Page Application (SPA)
@@ -90,7 +90,7 @@ npm install
    - **Allowed Scopes**: `openid`, `profile`, `email`
 
 4. Save your configuration and note your:
-   - **Authority URL** (`https://account.oten.live/`)
+   - **Authority URL** (`https://account.oten.com/`)
    - **Client ID**
 
 ### 4. Set Up Environment Variables
@@ -98,7 +98,7 @@ npm install
 Create a `.env` file in the project root:
 
 ```bash
-VITE_OTEN_IDP_AUTH_DOMAIN=https://account.oten.live/
+VITE_OTEN_IDP_AUTH_DOMAIN=https://account.oten.com/
 VITE_OTEN_IDP_CLIENT_ID=your_client_id_here
 ```
 
@@ -125,10 +125,10 @@ The application will start at **http://localhost:5173**
 
 ### Environment Variables
 
-| Variable                    | Required | Description                  | Example                      |
-| --------------------------- | -------- | ---------------------------- | ---------------------------- |
-| `VITE_OTEN_IDP_AUTH_DOMAIN` | ✅ Yes   | Oten IDP authority URL       | `https://account.oten.live/` |
-| `VITE_OTEN_IDP_CLIENT_ID`   | ✅ Yes   | Your application's client ID | `abc123xyz...`               |
+| Variable                    | Required | Description                  | Example                     |
+| --------------------------- | -------- | ---------------------------- | --------------------------- |
+| `VITE_OTEN_IDP_AUTH_DOMAIN` | ✅ Yes   | Oten IDP authority URL       | `https://account.oten.com/` |
+| `VITE_OTEN_IDP_CLIENT_ID`   | ✅ Yes   | Your application's client ID | `abc123xyz...`              |
 
 ### OIDC Configuration
 
@@ -337,7 +337,7 @@ import { AuthManager } from "./auth.js";
 
 // Configure OIDC
 const oidcSettings = {
-  authority: "https://account.oten.live/",
+  authority: "https://account.oten.com/",
   client_id: "your_client_id",
   redirect_uri: window.location.origin,
   post_logout_redirect_uri: window.location.origin,

@@ -19,7 +19,7 @@ npm install
 
 ### Step 2: Configure Oten IDP (2 min)
 
-1. Go to [Oten Developer Portal](https://developer.oten.live)
+1. Go to [Oten Developer Portal](https://developer.oten.com)
 2. Create/select your application
 3. Add these URLs:
    - **Redirect URIs**: `http://localhost:5173`
@@ -37,7 +37,7 @@ cp .env.example .env
 Edit `.env` and add your credentials:
 
 ```bash
-VITE_OTEN_IDP_AUTH_DOMAIN=https://account.oten.live/
+VITE_OTEN_IDP_AUTH_DOMAIN=https://account.oten.com/
 VITE_OTEN_IDP_CLIENT_ID=your_client_id_here
 ```
 
